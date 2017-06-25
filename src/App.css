@@ -1,0 +1,11 @@
+.App {
+
+}
+
+.side-panel {
+    position: fixed;
+    z-index: 100000;
+    width: 500px;
+    height: 100%;
+    background-color: black;
+}
