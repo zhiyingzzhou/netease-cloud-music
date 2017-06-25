@@ -1,36 +1,42 @@
 import React, { Component } from 'react';
 import DrawerComponent from 'components/drawer';
-import './App.css';
+
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import Actions from 'actions';
 
 class App extends Component {
 
-    state = {
-        isOpen: false
-    }
-
-    openDrawer = () => {
-        if(this.state.isOpen) return ;
-        this.setState({
-            isOpen: true
-        });
-    }
-
     render() {
-        const {isOpen} = this.state;
+        const {isDrawerOpen,openDrawer,closeDrawer} = this.props;
         return (
             <div className="App">
-                <DrawerComponent open={isOpen} onChange={ (boolean=false)=>this.setState({isOpen: boolean})} />
-                <div className="App-header">
-                  <h2>Welcome to React</h2>
-                  <button onClick={this.openDrawer}>打开菜单栏</button>
+                <DrawerComponent 
+                    open={isDrawerOpen} 
+                    onChange={ (boolean=false)=>(boolean ? openDrawer() : closeDrawer())} 
+                    drawerStyle = {{
+                    }}
+                />
+                <div className="page">
+                    {React.cloneElement(React.Children.only(this.props.children),{
+                        openDrawer
+                    })}
                 </div>
-                <input type="text"/>
-                <p className="App-intro">
-                  To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
             </div>
         );
     }
 }
 
-export default App;
+const mapStoreToProps = store => ({
+    isDrawerOpen: store.Drawer.isDrawerOpen
+})
+
+const mapDispatchToProps = dispatch => ({
+    openDrawer: bindActionCreators(Actions.DrawerActions.openDrawer,dispatch),
+    closeDrawer: bindActionCreators(Actions.DrawerActions.closeDrawer,dispatch)
+})
+
+export default connect(
+    mapStoreToProps,
+    mapDispatchToProps
+)(App);

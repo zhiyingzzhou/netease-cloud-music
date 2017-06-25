@@ -83,7 +83,9 @@ function getClientEnvironment(publicUrl) {
         env[key] = JSON.stringify(raw[key]);
         return env;
       },
-      {}
+      {
+        DrawerWidth: 600
+      }
     ),
   };
 

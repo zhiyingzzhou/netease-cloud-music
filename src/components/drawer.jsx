@@ -1,11 +1,20 @@
 import React , { Component } from 'react';
+import PropTypes from 'prop-types'; 
 import {Motion, spring} from 'react-motion';
 import Hammer from 'react-hammerjs';
+const {DrawerWidth=600} = process.env;
 
 export default class DrawerComponent extends Component {
+    
+    static propTypes = {
+        open: PropTypes.bool,
+        onChange: PropTypes.func.isRequired,
+        drawerStyle: PropTypes.object,
+        children: PropTypes.node
+    }
 
     state = {
-        translateX: -600
+        translateX: -DrawerWidth
     }
 
     defaultProps = {
@@ -25,11 +34,11 @@ export default class DrawerComponent extends Component {
     }
 
     close() {
-        this.setTranslateX(-600);
+        this.setTranslateX(-DrawerWidth);
         this.refs.overlay.style.opacity = '0';
         setTimeout(()=>{
             this.refs.overlay.style.visibility = 'hidden';
-        },1000);
+        },400);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -56,55 +65,66 @@ export default class DrawerComponent extends Component {
     handlePanEnd = e => {
         const {open,onChange} = this.props;
         const {deltaX} = e;
-        if(open && deltaX > -200) {
+        if(open && deltaX > -DrawerWidth/3) {
             this.setTranslateX(0);
         }
-        if(open && deltaX < -200) {
+        if(open && deltaX < -DrawerWidth/3) {
             onChange();
         }
     }
 
     render() {
-        const {open} = this.props;
         const {translateX} = this.state;
+        const {drawerStyle={},children,onChange} = this.props;
         return (
             <div>
                 <Hammer 
                     onPan={this.handlePan} 
                     onPanEnd={this.handlePanEnd}
+                    drawer={this.refs.drawer}
                 >
                     <Motion style={{ x: spring(translateX/75,this.config) }}>
                         {({x}) =>
-                        // children is a callback which should accept the current value of
-                        // `style`
-                        <div style={{
-                            position: 'fixed',
-                            zIndex: 10000,
-                            display: 'flex',
-                            height: '100%',
-                            backgroundColor: 'black',
-                            width: `${600/75}rem`,
-                            transform: `translate3d(${x}rem,0,0)`
-                        }}>
-                        </div>
+                            // children is a callback which should accept the current value of
+                            // `style`
+                            <div style={{
+                                ...styles.drawer,
+                                transform: `translate3d(${x}rem,0,0)`,
+                                drawerStyle
+                            }}>
+                                {children}
+                            </div>
                         }
                     </Motion>
                 </Hammer>
-                <Hammer onTap={()=>this.props.onChange()}>
+                <Hammer onTap={()=>onChange()}>
                     <div ref="overlay" style={{
-                        position: 'fixed',
-                        zIndex: 9999,
-                        background: 'rgba(0,0,0,.4)',
-                        left: 0,
-                        top: 0,
-                        width: '100%',
-                        height: '100%',
-                        opacity: 0,
-                        visibility: 'hidden',
-                        transition: 'opacity 1s',
+                        ...styles.overlay   
                     }}></div>
                 </Hammer>
             </div>
         )
+    }
+}
+
+const styles = {
+    drawer: {
+        position: 'fixed',
+        zIndex: 10000,
+        width: `${DrawerWidth/75}rem`,
+        height: '100%',
+        backgroundColor: 'black'
+    },
+    overlay: {
+        position: 'fixed',
+        zIndex: 9999,
+        background: 'rgba(0,0,0,.4)',
+        left: 0,
+        top: 0,
+        width: '100%',
+        height: '100%',
+        opacity: 0,
+        visibility: 'hidden',
+        transition: 'opacity .4s',
     }
 }

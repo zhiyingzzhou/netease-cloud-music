@@ -88,13 +88,21 @@ module.exports = {
     // We also include JSX as a common component filename extension to support
     // some tools, although we do not recommend using it, see:
     // https://github.com/facebookincubator/create-react-app/issues/290
-    extensions: ['.js', '.json', '.jsx'],
+    extensions: ['.web.js','.js', '.json', '.jsx'],
     alias: {
       
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
-      'components': resolve('src/components')
+      'components': resolve('src/components'),
+      'pages': resolve('src/pages'),
+      'actions': resolve('src/actions'),
+      'constants': resolve('src/constants'),
+      'reducer': resolve('src/reducer'),
+      'css': resolve('src/css'),
+      'scss': resolve('src/scss'),
+      'router': resolve('src/router'),
+      'images': resolve('src/images')
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -189,6 +197,45 @@ module.exports = {
       // in development "style" loader enables hot editing of CSS.
       {
         test: /\.css$/,
+        exclude: [
+            resolve('node_modules'),
+            resolve('src/css/public')
+        ],
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              modules: true
+            },
+          },
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                autoprefixer({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9', // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009',
+                }),
+              ],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        include: [
+          resolve('src/css/public'),
+          resolve('node_modules')
+        ],
         use: [
           require.resolve('style-loader'),
           {
