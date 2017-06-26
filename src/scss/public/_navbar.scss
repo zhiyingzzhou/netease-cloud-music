@@ -1,6 +1,10 @@
 div.am-navbar  {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: $navbar-height;
+    z-index: $navbar-zIndex;
     background-color: $theme-color;
-    height: 112px;
     a {
         display: flex;
     }

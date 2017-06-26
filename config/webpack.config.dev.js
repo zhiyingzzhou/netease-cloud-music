@@ -299,7 +299,7 @@ module.exports = {
           {
             loader: require.resolve('less-loader'),
             options: {
-              modifyVars: { "@brand-primary": "#ce3d3a" },
+              modifyVars: require('./theme'),
             },
           },
         ],

@@ -1,5 +1,24 @@
 div.am-navbar {
-  background-color: #ce3d3a;
-  height: 112px; }
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 112px;
+  z-index: 5000;
+  background-color: #ce3d3a; }
   div.am-navbar a {
     display: flex; }
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.page-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 112px; }
