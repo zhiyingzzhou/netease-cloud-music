@@ -1,7 +1,8 @@
 import React , { Component } from 'react';
+import PropTypes from 'prop-types';
 import Hammer from 'react-hammerjs';
 import NavBarComponent from 'components/navbar';
-
+import DiscoverComponent from 'components/index/discover';
 /**
  * css
  */
@@ -12,6 +13,11 @@ import navbarStyles from 'css/components/index/navbar.css';
 // import Actions from 'actions';
 
 export default class IndexPage extends Component {
+
+    static propTypes = {
+        openDrawer: PropTypes.func
+    }
+
     actionbarList = [
         'music',
         'discover',
@@ -26,7 +32,7 @@ export default class IndexPage extends Component {
         const {type} = this.state;
         const {PUBLIC_URL} = process.env;
         return (
-            <div>
+            <div className="page">
                 <NavBarComponent
                     leftContent={
                         <i className={`${navbarStyles.icon} ${navbarStyles.more}`}></i>
@@ -61,6 +67,9 @@ export default class IndexPage extends Component {
                         }
                     </div>
                 </NavBarComponent>
+                <div className="page-content">
+                    <DiscoverComponent />
+                </div>
             </div>
         )
     }

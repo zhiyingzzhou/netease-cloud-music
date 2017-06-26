@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DrawerComponent from 'components/drawer';
+import TransitionPages from 'pages/TransitionPages';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -8,7 +9,13 @@ import Actions from 'actions';
 class App extends Component {
 
     render() {
-        const {isDrawerOpen,openDrawer,closeDrawer} = this.props;
+        const {
+            location,
+            isDrawerOpen,
+            openDrawer,
+            closeDrawer,
+            children
+        } = this.props;
         return (
             <div className="App">
                 <DrawerComponent 
@@ -17,11 +24,11 @@ class App extends Component {
                     drawerStyle = {{
                     }}
                 />
-                <div className="page">
-                    {React.cloneElement(React.Children.only(this.props.children),{
-                        openDrawer
-                    })}
-                </div>
+                {React.cloneElement(children,{
+                    openDrawer
+                })}
+                {/*<TransitionPages location={location}>
+                </TransitionPages>*/}
             </div>
         );
     }
