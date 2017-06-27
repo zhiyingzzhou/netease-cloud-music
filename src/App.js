@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DrawerComponent from 'components/drawer';
+import DrawerContentComponent from 'components/drawer-content';
 import TransitionPages from 'pages/TransitionPages';
 
 import {connect} from 'react-redux';
@@ -23,7 +24,9 @@ class App extends Component {
                     onChange={ (boolean=false)=>(boolean ? openDrawer() : closeDrawer())} 
                     drawerStyle = {{
                     }}
-                />
+                >
+                    <DrawerContentComponent />
+                </DrawerComponent>
                 {React.cloneElement(children,{
                     openDrawer
                 })}

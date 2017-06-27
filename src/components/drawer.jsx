@@ -55,8 +55,11 @@ export default class DrawerComponent extends Component {
     }
 
     handlePan = e => {
+        e.preventDefault();
         const {translateX} = this.state;
-        const {deltaX} = e; 
+        const {deltaX,direction,isFinal} = e; 
+        if(isFinal) return ;
+        if(direction !== 2) return ;
         if(translateX + deltaX < 0) {
             this.setTranslateX(deltaX);
         }
@@ -109,11 +112,12 @@ export default class DrawerComponent extends Component {
 
 const styles = {
     drawer: {
-        position: 'fixed',
+        position: 'absolute',
         zIndex: 10000,
         width: `${DrawerWidth/75}rem`,
         height: '100%',
-        backgroundColor: 'black'
+        backgroundColor: '#FFF',
+        overflow: 'auto'
     },
     overlay: {
         position: 'fixed',

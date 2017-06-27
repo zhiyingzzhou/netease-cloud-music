@@ -1,64 +1,42 @@
 import React , { Component } from 'react';
-import { Tabs , Carousel } from 'antd-mobile';
-import Hammer from 'react-hammerjs';
+import { Tabs } from 'antd-mobile';
+/**
+ * css
+ */
+import tabStyles from 'css/components/index/tab.css';
+// 个性推荐
+import PersonalityRecommendComponent from './discover/section01';
 
 const TabPane = Tabs.TabPane;
-const tabData = [
-    '个性推荐',
-    '歌单',
-    '主播电台',
-    '排行榜'
-];
-
 function callback(key) {
-  console.log('onChange', key);
 }
 function handleTabClick(key) {
-  console.log('onTabClick', key);
 }
 
 export default class DiscoverComponent extends Component {
-    
-    handleTap = () => {
-        console.log('onTap');
-    }
-
     render() {
         return (
             <div>
                 <Tabs 
+                    className={tabStyles.tablist}
                     tabBarPosition="top"
                     defaultActiveKey="0" 
                     onChange={callback} 
                     onTabClick={handleTabClick}
-                    hammerOptions={{
-                        onTag: this.handleTap
-                    }}
+                    swipeable={false}
                 >
-                    {
-                        tabData.map((item,index)=>{
-                            return (
-                                <TabPane tab={item} key={index}>
-                                    <Hammer
-                                        onTap={this.handleTap}
-                                    >
-                                        <div>
-                                            {
-                                                [...new Array(100).keys()].map((item,index)=>{
-                                                    return (
-                                                        <p key={index}>
-                                                            重复内容
-                                                        </p>
-                                                    )
-                                                })
-                                            }
-                                        </div>
-                                    </Hammer>
-                                </TabPane>
-                            )
-                        })
-                    }
-                    
+                    <TabPane tab="个性推荐" key={0}>
+                        <PersonalityRecommendComponent />
+                    </TabPane>
+                    <TabPane tab="歌单" key={1}>
+                        <PersonalityRecommendComponent />
+                    </TabPane>
+                    <TabPane tab="主播电台" key={2}>
+                        <PersonalityRecommendComponent />
+                    </TabPane>
+                    <TabPane tab="排行榜" key={3}>
+                        <PersonalityRecommendComponent />
+                    </TabPane>
                 </Tabs>
             </div>
         )

@@ -1,4 +1,8 @@
 @import '../variable';
 
+body {
+    font-family:  Helvetica,sans-serif;
+}
+
 @import './navbar';
 @import './page';

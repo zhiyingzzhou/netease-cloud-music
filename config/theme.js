@@ -8,7 +8,7 @@ const textConfig = {
 };
 // 背景色
 const bgConfig = {
-    "@fill-base": "#f2f4f5", // 组件默认背景
+    "@fill-base": "#FFF", // 组件默认背景
 };
 // 全局/品牌色
 const themeConfig = {
@@ -17,7 +17,7 @@ const themeConfig = {
 
 // 边框色
 const borderConfig = {
-    "@border-color-base": "lightness(#000000)"
+    "@border-color-base": "#e6e6e6"
 };
 
 module.exports = merge(textConfig,bgConfig,themeConfig,borderConfig);

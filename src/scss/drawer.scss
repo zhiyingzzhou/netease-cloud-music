@@ -1,0 +1,118 @@
+@import './variable';
+
+@mixin font {
+    font-size: $weak-text-x-small-size;
+    line-height: 1;
+}
+
+.scrollContent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    touch-action: pan-y;
+    box-sizing: border-box;
+    padding-bottom: $drawer-toolbar-height;
+    // 列表上下留白
+    :global(.am-whitespace) {
+        background-color: lighten( #000000, 95%);
+        height: 12.5px;
+    }
+}
+
+.top_bg {
+    background-image: url(../images/drawer/afr.png);
+    width: 100%;
+    height: 374px;
+    background-size: cover;
+    color: $color-text-secondary-icon;
+    text-align: center;
+    padding-top: 78px;
+    box-sizing: border-box;
+    @include font;
+    p:first-child {
+        margin-bottom: 12.5px;
+    }
+    :global(.am-button) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 305px;
+        height: 68px;
+        text-decoration: none;
+        background: transparent;
+        color: #FFF;
+        margin: 50px auto 0;
+        border: 1px solid $color-text-secondary-icon;
+        border-radius: 50px;
+        @include font;
+    }
+}
+
+.toolbar {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1 1 0%;
+        font-size: 30px;
+        text-decoration: none;
+        height: $drawer-toolbar-height;
+        line-height: 1;
+        border-radius: 0;
+        border: 0;
+        border-top: 1px solid $border-color;
+        &:first-child {
+            flex: 1.3 1 0%;
+        }
+    }
+    i {
+        display: block;
+        width: 35px;
+        height: 35px;
+        background-size: cover;
+        margin-right: 20px;
+        &:global(.mode) {
+            background-image: url(../images/drawer/ag5.png);
+        }
+        &:global(.settings) {
+            background-image: url(../images/drawer/ag6.png);
+        }
+        &:global(.logout) {
+            background-image: url(../images/drawer/afx.png);
+        }
+    }
+}
+
+.list {
+    :global(.am-list-body div:not(:last-child) .am-list-line:after){
+        border-bottom: 0;
+    }
+    :global(.am-list-item) {
+        padding-left: 25px;
+        i {
+            height: 30px;
+            width: 30px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: block;
+            background-image: url(../images/drawer/a3a.png);
+        }
+    }
+    :global(.am-list-thumb:first-child) {
+        margin-right: 21px;
+    }
+    :global(.am-list-line) {
+        padding-right: 25px;
+        :global(.am-list-content) {
+            line-height: 1;
+            font-size: 27px;
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+    }
+}
