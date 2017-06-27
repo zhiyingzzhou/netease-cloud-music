@@ -6,15 +6,16 @@ import { Carousel } from 'antd-mobile';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Actions from 'actions';
-
+import Utils from 'utils';
+const bannerHeight = Utils.coverHeight(280);
 class BannerComponent extends Component {
     state = {
         data: ['1', '2'],
-        initialHeight: '302.6',
+        initialHeight: bannerHeight
     }
 
     componentDidMount() {
-        this.props.getBanner();
+        // this.props.getBanner();
     }
 
     render() {
@@ -43,7 +44,7 @@ class BannerComponent extends Component {
                                 // fire window resize event to change height
                                 window.dispatchEvent(new Event('resize'));
                                 this.setState({
-                                    initialHeight: `${302.6/75}rem`,
+                                    initialHeight: bannerHeight,
                                 });
                             }}
                         />

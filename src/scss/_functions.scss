@@ -1,0 +1,3 @@
+@function covertHeight($height: 0) {
+    @return $height / 1231 * 1334 * 1px;
+}

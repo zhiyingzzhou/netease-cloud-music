@@ -1,4 +1,5 @@
 @import '../../variable';
+@import '../../functions';
 
 .tablist {
     :global(.am-tabs-bar) {
@@ -7,11 +8,11 @@
         z-index: 5000;
         width: 100%;
         :global(.am-tabs-tab) {
-            height: 83px;
-            line-height: 83px;
+            height: $index-tab-height;
+            line-height: $index-tab-height;
         }
     }
     :global(.am-tabs-tabpane) {
-        margin-top: 83px;
+        margin-top: covertHeight(74);
     }
 }

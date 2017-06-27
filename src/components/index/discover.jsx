@@ -29,7 +29,6 @@ export default class DiscoverComponent extends Component {
                         <PersonalityRecommendComponent />
                     </TabPane>
                     <TabPane tab="歌单" key={1}>
-                        <PersonalityRecommendComponent />
                     </TabPane>
                     <TabPane tab="主播电台" key={2}>
                         <PersonalityRecommendComponent />

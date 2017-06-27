@@ -103,7 +103,8 @@ module.exports = {
       'scss': resolve('src/scss'),
       'router': resolve('src/router'),
       'images': resolve('src/images'),
-      'utils': resolve('src/utils')
+      'utils': resolve('src/utils'),
+      'componentsBaseHammer': resolve('src/components-base-hammer')
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).

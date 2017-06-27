@@ -13,29 +13,29 @@
 .top_bg {
   background-image: url(../images/drawer/afr.png);
   width: 100%;
-  height: 374px;
+  height: 374.95045px;
   background-size: cover;
   color: #b2b2b2;
   text-align: center;
-  padding-top: 78px;
+  padding-top: 79.10804px;
   box-sizing: border-box;
-  font-size: 27px;
+  font-size: 26px;
   line-height: 1; }
   .top_bg p:first-child {
-    margin-bottom: 12.5px; }
+    margin-bottom: 13.00406px; }
   .top_bg :global(.am-button) {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 305px;
-    height: 68px;
+    width: 317.51584px;
+    height: 67.18765px;
     text-decoration: none;
     background: transparent;
     color: #FFF;
-    margin: 50px auto 0;
+    margin: 52.01625px auto 0;
     border: 1px solid #b2b2b2;
     border-radius: 50px;
-    font-size: 27px;
+    font-size: 26px;
     line-height: 1; }
 
 .toolbar {

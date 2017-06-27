@@ -27,11 +27,11 @@ class App extends Component {
                 >
                     <DrawerContentComponent />
                 </DrawerComponent>
-                {React.cloneElement(children,{
-                    openDrawer
-                })}
-                {/*<TransitionPages location={location}>
-                </TransitionPages>*/}
+                <TransitionPages location={location}>
+                    {React.cloneElement(children,{
+                        openDrawer
+                    })}
+                </TransitionPages>
             </div>
         );
     }

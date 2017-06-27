@@ -1,0 +1,84 @@
+@import '../../variable';
+@import '../../functions';
+
+.tab {
+    display: flex;
+    padding: covertHeight(30) 0;
+    justify-content: space-between;
+    border-bottom: 1px solid $border-color;
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1 1 0%;
+        text-decoration: none;
+    }
+    i {
+        display: flex;
+        width: covertHeight(103);
+        height: covertHeight(103);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    p {
+        margin-top: covertHeight(14);
+        font-size: $weak-text-x-small-size;
+        color: $color-text-import;
+    }
+    a:first-child {
+        i {
+            background-image: url(../../../images/index/t_recommend_icn_fm_small.png);
+        }
+    }
+    a:nth-child(2) {
+        i {
+            background-image: url(../../../images/index/t_recommend_icn_daily_small.png);
+        }
+    }
+    a:last-child {
+        i {
+            background-image: url(../../../images/index/t_recommend_icn_rank_small.png);
+        }
+    }
+}
+
+.tabct {
+    h2 {
+        font-size: $weak-text-medium-size;
+        font-weight: bold;
+        margin: covertHeight(45) 0 covertHeight(29);
+        padding-left:covertHeight(19);
+        border-left: covertHeight(4) solid $theme-color;
+    }
+}
+.tabitem {
+    display: flex;
+    li {
+        display: block;
+        flex: 1 1 auto;
+        margin-right: covertHeight(4);
+        &:last-child {
+            margin-right: 0;
+        }
+        &>div {
+            position: relative;
+            background-color: #ccc;
+            &:after {
+                content: '';
+                display: block;
+                padding-bottom: 100%;
+            }
+            img {
+                position: absolute;
+                width: 100%;
+            }
+        }
+    }
+    p {
+        box-sizing: border-box;
+        font-size: $weak-text-x-small-size;
+        line-height: 31px;
+        // word-break: break-all;
+        padding: covertHeight(18) covertHeight(34) covertHeight(42) covertHeight(13);
+    }
+}

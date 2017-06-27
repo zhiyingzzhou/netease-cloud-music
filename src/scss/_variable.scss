@@ -1,3 +1,5 @@
+@import './functions';
+
 // 主题色
 $theme-color: #ce3d3a;
 
@@ -19,9 +21,9 @@ $import-text-small-size: 46px; // 用于大多数文字（如个人主页名称�
 $common-text-large-size: 42px; // 用于大多数文字（如评论内容,动态引用等）
 $common-text-small-size: 39px; // 用于少数重要标题（如评论及动态用户名、小标题等）
 $weak-text-large-size: 36px; // 用于辅助性文字（如备注，提示说明等）
-$weak-text-medium-size: 33px; // 用于辅助性文字（如歌单创建时间、专辑名、作者名等）
+$weak-text-medium-size: 32px; // 用于辅助性文字（如歌单创建时间、专辑名、作者名等）
 $weak-text-small-size: 30px; // 用于极少辅助性名字（如动态时间、听歌识曲等）
-$weak-text-x-small-size: 27px; // 用于极少辅助性文字
+$weak-text-x-small-size: 26px; // 用于极少辅助性文字
 
 // 背景色
 $fill-base: black;
@@ -30,8 +32,11 @@ $fill-base: black;
 $border-color: lighten(#000000,90%);
 
 // navbar
-$navbar-height: 112px;
+$navbar-height: covertHeight(104);
 $navbar-zIndex: 5000;
+
+// 首页分类推荐tab高度
+$index-tab-height: covertHeight(75);
 
 // drawer
 $drawer-toolbar-height: 98px;

@@ -1,0 +1,6 @@
+div.am-carousel-wrap-dot span {
+  height: 15px;
+  width: 15px; }
+
+div.am-carousel-wrap-dot-active > span {
+  background-color: #ce3d3a; }

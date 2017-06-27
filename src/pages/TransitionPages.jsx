@@ -1,7 +1,6 @@
 import React , { Component } from 'react';
 import PropTypes from 'prop-types';
-import ReactCssTransitionGroup from 'react-addons-css-transition-group';
-import { CSSTransitionGroup } from 'react-transition-group'
+import { CSSTransitionGroup } from 'react-transition-group';
 
 export default class TransitionPages extends Component {
 
@@ -11,17 +10,29 @@ export default class TransitionPages extends Component {
     }
 
     render() {
+        let transition = 'left';
         const {location,children} = this.props;
+        if(location.state && location.state.transition) {
+            switch(location.state.transition) {
+                case 'up':
+                    transition = 'sfu';
+                    break;
+                case 'down':
+                    transition = 'rfu';
+                    break;
+            }
+        }
         return (
-            <ReactCssTransitionGroup
-                transitionName="css-transition-group-example"
-                transitionEnterTimeout={5000000}
-                transitionLeaveTimeout={3000000}>
+            <CSSTransitionGroup
+                component="div"
+                transitionName={`page-transition-${transition}`}
+                transitionEnterTimeout={200}
+                transitionLeaveTimeout={200}
             >
                 {React.cloneElement(children,{
                     key: location.pathname
                 })}
-            </ReactCssTransitionGroup>
+            </CSSTransitionGroup>
         )
     }
 }

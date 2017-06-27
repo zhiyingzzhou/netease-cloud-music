@@ -3,7 +3,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  background: #FFF; }
 
 .page-content {
   position: absolute;
@@ -11,6 +12,40 @@
   left: 0;
   width: 100%;
   height: 100%;
-  padding-top: 112px;
+  padding-top: 112.70187px;
   box-sizing: border-box;
   overflow: auto; }
+
+@keyframes page-sfu-enter {
+  from {
+    transform: translate3d(0, 6%, 0); }
+  to {
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes page-rfu-leave {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0); }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 20%, 0); } }
+
+.page-transition-sfu-enter-active {
+  pointer-events: none;
+  z-index: 5001; }
+
+.page-transition-rfu-leave-active {
+  pointer-events: none;
+  z-index: 5001; }
+
+.page-transition-sfu-enter-active {
+  animation-name: page-sfu-enter;
+  animation-duration: .2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); }
+
+.page-transition-rfu-leave-active {
+  animation-name: page-rfu-leave;
+  animation-duration: .2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); }

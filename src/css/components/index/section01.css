@@ -1,0 +1,58 @@
+.tab {
+  display: flex;
+  padding: 32.51015px 0;
+  justify-content: space-between;
+  border-bottom: 1px solid #e6e6e6; }
+  .tab a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 0%;
+    text-decoration: none; }
+  .tab i {
+    display: flex;
+    width: 111.6182px;
+    height: 111.6182px;
+    background-size: cover;
+    background-repeat: no-repeat; }
+  .tab p {
+    margin-top: 15.17141px;
+    font-size: 26px;
+    color: #333; }
+  .tab a:first-child i {
+    background-image: url(../../../images/index/t_recommend_icn_fm_small.png); }
+  .tab a:nth-child(2) i {
+    background-image: url(../../../images/index/t_recommend_icn_daily_small.png); }
+  .tab a:last-child i {
+    background-image: url(../../../images/index/t_recommend_icn_rank_small.png); }
+
+.tabct h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 48.76523px 0 31.42648px;
+  padding-left: 20.58976px;
+  border-left: 4.33469px solid #ce3d3a; }
+
+.tabitem {
+  display: flex; }
+  .tabitem li {
+    display: block;
+    flex: 1 1 auto;
+    margin-right: 4.33469px; }
+    .tabitem li:last-child {
+      margin-right: 0; }
+    .tabitem li > div {
+      position: relative;
+      background-color: #ccc; }
+      .tabitem li > div:after {
+        content: '';
+        display: block;
+        padding-bottom: 100%; }
+      .tabitem li > div img {
+        position: absolute;
+        width: 100%; }
+  .tabitem p {
+    box-sizing: border-box;
+    font-size: 26px;
+    line-height: 31px;
+    padding: 19.50609px 36.84484px 45.51422px 14.08773px; }

@@ -5,6 +5,7 @@
   "dependencies": {
     "antd-mobile": "^1.4.0",
     "axios": "^0.16.2",
+    "lodash": "^4.17.4",
     "normalize.css": "^7.0.0",
     "react": "^15.6.1",
     "react-addons-css-transition-group": "^15.6.0",

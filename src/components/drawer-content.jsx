@@ -1,13 +1,20 @@
 import React , { Component } from 'react';
+import PropTypes from 'prop-types';
 import Hammer from 'react-hammerjs';
-import {Button,List,WhiteSpace} from 'antd-mobile';
+import {List,WhiteSpace} from 'antd-mobile';
+import {ListItem,Button} from 'componentsBaseHammer';
 /**
  * css
  */
 import styles from 'css/drawer.css';
-const Item = List.Item;
+/**
+ * redux
+ */
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import Actions from 'actions';
 
-export default class DrawerContentComponent extends Component {
+class DrawerContentComponent extends Component {
 
     list = [
         [
@@ -62,25 +69,51 @@ export default class DrawerContentComponent extends Component {
         ]
     ]
 
+    static contextTypes = {
+        router: PropTypes.object
+    }
+
     state = {
         translateY: 0
     }
 
+    componentWillReceiveProps(nextProps){
+        const {isDrawerOpen} = this.props;
+        const {isDrawerOpen:isOpen} = nextProps;
+        if(isDrawerOpen !== isOpen && isOpen === false) {
+            this.handleTap();
+        }
+    }
+
     handleTap = e => {
+        const {isDrawerOpen} = this.props;
+        if(isDrawerOpen){
+            this.props.closeDrawer();
+        }
+        if(typeof e === 'undefined') {
+            setTimeout(()=>{
+                this.context.router.push({
+                    pathname: 'settings',
+                    state: {
+                        transition: 'up'
+                    }
+                });
+            },500);
+        }   
     }
 
     _renderItem = arr => {
         return arr.map((item,index)=>{
             return (
-                <Item 
+                <ListItem
                     key={index}
                     thumb={
                         <i></i>
                     }
-                    onClick={()=>{}}
+                    onTap={this.handleTap}
                 >
                     {item.text}
-                </Item>
+                </ListItem>
             )
         })
     }
@@ -138,3 +171,16 @@ export default class DrawerContentComponent extends Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+    isDrawerOpen: state.Drawer.isDrawerOpen
+})
+
+const mapDispatchToProps = dispatch => ({
+    closeDrawer: bindActionCreators(Actions.DrawerActions.closeDrawer,dispatch)
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(DrawerContentComponent);
