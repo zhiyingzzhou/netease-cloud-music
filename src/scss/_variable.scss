@@ -2,17 +2,37 @@
 
 // 主题色
 $theme-color: #ce3d3a;
+// $theme-color: #902b2b;
 
 // text color
-$color-text-import: #333; // 用于重要及文字信息、内容标题信息（如Tab名称、歌单名称、大板块标题、类目名称等）
-$color-link: #477aac; // 小面积使用，用于重要链接文字颜色
-$color-text-normal: #666666; // 用于普通级段落信息、用户名、icon等
-$color-text-secondary: #888888; // 用于辅助、次要的文字信息
-$color-text-secondary-sort: #999999; // 用于辅助、次要的文字信息、排序等
-$color-text-secondary-icon: #b2b2b2; // 用于辅助、次要的文字信息、icon等
+$color-text-base: #333; // 用于重要及文字信息、内容标题信息（如Tab名称、歌单名称、大板块标题、类目名称等）
+// $color-text-base: #adaeb3;
+$color-link-base: #477aac; // 小面积使用，用于重要链接文字颜色
+$color-text-paragraph: #666666; // 用于普通级段落信息、用户名、icon等
+$color-text-caption: #888888; // 用于辅助、次要的文字信息
+$color-text-caption-sort: #999999; // 用于辅助、次要的文字信息、排序等
+$color-text-caption-icon: #b2b2b2; // 用于辅助、次要的文字信息、icon等
 
-// 内容区底色
-$bg-color-weak: #f2f4f5;
+// 背景色
+$fill-base: #f2f4f5;
+// $fill-base: #111214;
+$fill-module-base: lighten(#000000,90%); // 用于分割模板的标题栏底色、动态资源底色
+// $fill-module-base: #111214; 
+
+// 边框颜色
+$border-color: lighten(#000000,90%);
+// $border-color: #1c1d1f;
+// $border-color: lighten(#000000,10%);
+
+// navbar
+$navbar-height: covertHeight(104);
+$navbar-zIndex: 5000;
+
+// 首页分类推荐tab高度
+$index-tab-height: covertHeight(75);
+
+// drawer
+$drawer-toolbar-height: 98px;
 
 // text-size
 $import-text-large-size: 51px; // 用在导航栏标题
@@ -24,19 +44,3 @@ $weak-text-large-size: 36px; // 用于辅助性文字（如备注，提示说明
 $weak-text-medium-size: 32px; // 用于辅助性文字（如歌单创建时间、专辑名、作者名等）
 $weak-text-small-size: 30px; // 用于极少辅助性名字（如动态时间、听歌识曲等）
 $weak-text-x-small-size: 26px; // 用于极少辅助性文字
-
-// 背景色
-$fill-base: black;
-
-// 边框颜色
-$border-color: lighten(#000000,90%);
-
-// navbar
-$navbar-height: covertHeight(104);
-$navbar-zIndex: 5000;
-
-// 首页分类推荐tab高度
-$index-tab-height: covertHeight(75);
-
-// drawer
-$drawer-toolbar-height: 98px;

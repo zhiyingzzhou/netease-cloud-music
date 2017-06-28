@@ -1,13 +1,35 @@
 body {
   font-family: Helvetica,sans-serif; }
 
+.theme-bg-color {
+  background-color: #ce3d3a; }
+  .theme-bg-color.am-navbar {
+    background-color: #ce3d3a; }
+
+.color-text-base {
+  color: #333; }
+  .color-text-base .am-tabs-bar .am-tabs-tab {
+    color: #333; }
+  .color-text-base .am-tabs-bar .am-tabs-tab-active {
+    color: #ce3d3a; }
+  .color-text-base .am-list-item .am-list-line .am-list-content {
+    color: #333; }
+
+.fill-base {
+  background-color: #f2f4f5; }
+
+.fill-module-base {
+  background-color: #e6e6e6; }
+
+.border-bottom-base {
+  border-bottom: 1px solid #e6e6e6; }
+
 div.am-navbar {
   position: absolute;
   top: 0;
   width: 100%;
   height: 112.70187px;
-  z-index: 5000;
-  background-color: #ce3d3a; }
+  z-index: 5000; }
   div.am-navbar a {
     display: flex; }
 

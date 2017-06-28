@@ -21,7 +21,7 @@ class App extends Component {
             <div className="App">
                 <DrawerComponent 
                     open={isDrawerOpen} 
-                    onChange={ (boolean=false)=>(boolean ? openDrawer() : closeDrawer())} 
+                    onClose={()=>closeDrawer()}
                     drawerStyle = {{
                     }}
                 >

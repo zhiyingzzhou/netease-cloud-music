@@ -1,0 +1,47 @@
+@import 'variable';
+@mixin themeBgColor {
+    background-color: $theme-color;
+}
+
+.theme-bg-color {
+    @include themeBgColor;
+    // 导航栏
+    &.am-navbar {
+        @include themeBgColor;
+    }
+}
+
+.color-text-base {
+    color: $color-text-base;
+    // 首页tab
+    .am-tabs-bar .am-tabs-tab {
+        color: $color-text-base;
+    }
+    .am-tabs-bar .am-tabs-tab-active {
+        color: $theme-color;
+    }
+    .am-list-item .am-list-line .am-list-content {
+        color: $color-text-base;
+    }
+}
+
+.fill-base {
+    background-color: $fill-base;
+    // 首页tab
+    .am-tabs-bar .am-tabs-tab {
+        // background-color: #17181a;
+    }
+    // 抽屉列表
+    .am-list-item {
+        // background-color: #18181A;
+    }
+}
+
+.fill-module-base {
+    background-color: $fill-module-base;
+}
+
+// 边框颜色
+.border-bottom-base {
+    border-bottom: 1px solid $border-color;
+}

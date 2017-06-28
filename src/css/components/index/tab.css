@@ -5,7 +5,8 @@
   width: 100%; }
   .tablist :global(.am-tabs-bar) :global(.am-tabs-tab) {
     height: 81.27539px;
-    line-height: 81.27539px; }
+    line-height: 81.27539px;
+    border: none; }
 
 .tablist :global(.am-tabs-tabpane) {
   margin-top: 80.19171px; }

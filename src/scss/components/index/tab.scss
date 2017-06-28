@@ -10,6 +10,7 @@
         :global(.am-tabs-tab) {
             height: $index-tab-height;
             line-height: $index-tab-height;
+            border: none;
         }
     }
     :global(.am-tabs-tabpane) {

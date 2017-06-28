@@ -3,9 +3,8 @@
 
 .tab {
     display: flex;
-    padding: covertHeight(30) 0;
+    padding: covertHeight(32) 0;
     justify-content: space-between;
-    border-bottom: 1px solid $border-color;
     a {
         display: flex;
         flex-direction: column;
@@ -23,7 +22,6 @@
     p {
         margin-top: covertHeight(14);
         font-size: $weak-text-x-small-size;
-        color: $color-text-import;
     }
     a:first-child {
         i {
@@ -43,10 +41,13 @@
 }
 
 .tabct {
+    section {
+        padding-top: covertHeight(45);
+    }
     h2 {
         font-size: $weak-text-medium-size;
         font-weight: bold;
-        margin: covertHeight(45) 0 covertHeight(29);
+        margin-bottom: covertHeight(29);
         padding-left:covertHeight(19);
         border-left: covertHeight(4) solid $theme-color;
     }

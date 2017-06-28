@@ -7,7 +7,6 @@
   box-sizing: border-box;
   padding-bottom: 98px; }
   .scrollContent :global(.am-whitespace) {
-    background-color: #f2f2f2;
     height: 12.5px; }
 
 .top_bg {
@@ -70,8 +69,13 @@
     .toolbar i:global(.logout) {
       background-image: url(../images/drawer/afx.png); }
 
+.list :global(.am-list-body) {
+  border-top: none; }
+  .list :global(.am-list-body):after {
+    border-bottom: none; }
+
 .list :global(.am-list-body div:not(:last-child) .am-list-line:after) {
-  border-bottom: 0; }
+  border-bottom: none; }
 
 .list :global(.am-list-item) {
   padding-left: 25px; }

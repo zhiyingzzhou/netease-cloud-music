@@ -4,6 +4,7 @@ body {
     font-family: Helvetica,sans-serif;
 }
 
+@import '../theme';
 @import './navbar';
 @import './page';
 @import './pagination';

@@ -16,7 +16,6 @@
     padding-bottom: $drawer-toolbar-height;
     // 列表上下留白
     :global(.am-whitespace) {
-        background-color: lighten( #000000, 95%);
         height: 12.5px;
     }
 }
@@ -26,7 +25,7 @@
     width: 100%;
     height: covertHeight(346);
     background-size: cover;
-    color: $color-text-secondary-icon;
+    color: $color-text-caption-icon;
     text-align: center;
     padding-top: covertHeight(73);
     box-sizing: border-box;
@@ -44,7 +43,7 @@
         background: transparent;
         color: #FFF;
         margin: covertHeight(48) auto 0;
-        border: 1px solid $color-text-secondary-icon;
+        border: 1px solid $color-text-caption-icon;
         border-radius: 50px;
         @include font;
     }
@@ -90,8 +89,14 @@
 }
 
 .list {
+    :global(.am-list-body) {
+        border-top: none;
+        &:after {
+            border-bottom: none;
+        }
+    }
     :global(.am-list-body div:not(:last-child) .am-list-line:after){
-        border-bottom: 0;
+        border-bottom: none;
     }
     :global(.am-list-item) {
         padding-left: 25px;

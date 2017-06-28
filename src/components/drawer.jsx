@@ -2,43 +2,37 @@ import React , { Component } from 'react';
 import PropTypes from 'prop-types'; 
 import {Motion, spring} from 'react-motion';
 import Hammer from 'react-hammerjs';
-const {DrawerWidth=600} = process.env;
 
 export default class DrawerComponent extends Component {
     
     static propTypes = {
         open: PropTypes.bool,
-        onChange: PropTypes.func.isRequired,
+        onOpen: PropTypes.func,
+        onClose: PropTypes.func,
         drawerStyle: PropTypes.object,
         children: PropTypes.node
     }
 
-    state = {
-        translateX: -DrawerWidth
+    drawerWidth = 0;
+
+    state = {}
+
+    componentWillMount() {
+        this.drawerWidth = this.props.width;
+        this.setTranslateX(-this.drawerWidth);
     }
 
-    defaultProps = {
-        open: false
+    static defaultProps = {
+        open: false,
+        width: 600
     }
+
+    isOpen = false;
 
     config = {
         stiffness: 300,
         damping: 30,
         precision: 1
-    }
-
-    open() {
-        this.setTranslateX(0);
-        this.refs.overlay.style.visibility = 'visible';
-        this.refs.overlay.style.opacity = '1';
-    }
-
-    close() {
-        this.setTranslateX(-DrawerWidth);
-        this.refs.overlay.style.opacity = '0';
-        setTimeout(()=>{
-            this.refs.overlay.style.visibility = 'hidden';
-        },400);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -50,41 +44,67 @@ export default class DrawerComponent extends Component {
         }
     }
 
+    open() {
+        this.setTranslateX(0);
+        this.refs.overlay.style.visibility = 'visible';
+        this.refs.overlay.style.opacity = '1';
+        this.setOpenStatus(true);
+    }
+
+    close() {
+        this.setTranslateX(-this.drawerWidth);
+        this.refs.overlay.style.opacity = '0';
+        this.setOpenStatus(false);
+    }
+
+    setOpenStatus = isOpen => {
+        this.setState({isOpen});
+    }
+
     setTranslateX = translateX => {
         this.setState({translateX});
     }
 
     handlePan = e => {
         e.preventDefault();
-        const {translateX} = this.state;
         const {deltaX,direction,isFinal} = e; 
         if(isFinal) return ;
         if(direction !== 2) return ;
-        if(translateX + deltaX < 0) {
-            this.setTranslateX(deltaX);
-        }
+        this.setTranslateX(deltaX);
     }
 
     handlePanEnd = e => {
-        const {open,onChange} = this.props;
-        const {deltaX} = e;
-        if(open && deltaX > -DrawerWidth/3) {
+        if(this.state.isOpen && e.deltaX > -this.drawerWidth/3) {
             this.setTranslateX(0);
+            return ;
         }
-        if(open && deltaX < -DrawerWidth/3) {
-            onChange();
+        this.close();
+    }
+
+    handleRest = e => {
+        const {onOpen,onClose} = this.props;
+        if(this.state.isOpen){
+            if(!this.isOpen){
+                if(onOpen) onOpen();
+                // 防止滑动抽屉距离小于抽屉宽度的三分之一而触发父元素的onOpen事件
+                this.isOpen = true;
+            }
+        }else{
+            this.isOpen = false; 
+            this.refs.overlay.style.visibility = 'hidden';
+            if(onClose) onClose();
         }
     }
 
     render() {
         const {translateX} = this.state;
-        const {drawerStyle={},children,onChange} = this.props;
+        const {drawerStyle={},children} = this.props;
         return (
             <div>
                 <Hammer 
                     onPan={this.handlePan} 
                     onPanEnd={this.handlePanEnd}
-                    drawer={this.refs.drawer}
+                    onRest={this.handleRest}
                 >
                     <Motion style={{ x: spring(translateX/75,this.config) }}>
                         {({x}) =>
@@ -92,6 +112,7 @@ export default class DrawerComponent extends Component {
                             // `style`
                             <div style={{
                                 ...styles.drawer,
+                                width: `${this.drawerWidth/75}rem`,
                                 transform: `translate3d(${x}rem,0,0)`,
                                 drawerStyle
                             }}>
@@ -100,7 +121,7 @@ export default class DrawerComponent extends Component {
                         }
                     </Motion>
                 </Hammer>
-                <Hammer onTap={()=>onChange()}>
+                <Hammer onTap={()=>this.close()}>
                     <div ref="overlay" style={{
                         ...styles.overlay   
                     }}></div>
@@ -114,7 +135,6 @@ const styles = {
     drawer: {
         position: 'absolute',
         zIndex: 10000,
-        width: `${DrawerWidth/75}rem`,
         height: '100%',
         backgroundColor: '#FFF',
         overflow: 'auto'

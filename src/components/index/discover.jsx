@@ -18,7 +18,7 @@ export default class DiscoverComponent extends Component {
         return (
             <div>
                 <Tabs 
-                    className={tabStyles.tablist}
+                    className={tabStyles.tablist + ' fill-base color-text-base'}
                     tabBarPosition="top"
                     defaultActiveKey="0" 
                     onChange={callback} 

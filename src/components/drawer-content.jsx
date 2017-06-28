@@ -91,14 +91,14 @@ class DrawerContentComponent extends Component {
             this.props.closeDrawer();
         }
         if(typeof e === 'undefined') {
-            setTimeout(()=>{
-                this.context.router.push({
-                    pathname: 'settings',
-                    state: {
-                        transition: 'up'
-                    }
-                });
-            },500);
+            // setTimeout(()=>{
+            //     this.context.router.push({
+            //         pathname: 'settings',
+            //         state: {
+            //             transition: 'up'
+            //         }
+            //     });
+            // },500);
         }   
     }
 
@@ -141,12 +141,12 @@ class DrawerContentComponent extends Component {
                             this.list.map((arr,index)=>{
                                 return (
                                     <section key={index}>
-                                        <List className={styles.list}>
+                                        <List className={styles.list+' fill-base color-text-base'}>
                                             {
                                                 this._renderItem(arr)
                                             }
                                         </List>
-                                        {index < this.list.length - 1 ? <WhiteSpace /> : null }
+                                        {index < this.list.length - 1 ? <WhiteSpace className="fill-module-base" /> : null }
                                     </section>
                                 )
                             })

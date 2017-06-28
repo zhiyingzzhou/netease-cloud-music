@@ -8,7 +8,7 @@ const textConfig = {
 };
 // 背景色
 const bgConfig = {
-    "@fill-base": "#FFF", // 组件默认背景
+    "@fill-base": "#f2f4f5", // 组件默认背景
 };
 // 全局/品牌色
 const themeConfig = {

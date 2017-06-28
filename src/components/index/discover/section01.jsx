@@ -23,7 +23,7 @@ export default class PersonalityRecommendActions extends Component {
                     <div>
                         <img src={src} alt=""/> 
                     </div>
-                    <p>请问你有freestyle吗？</p>
+                    <p className="color-text-base">请问你有freestyle吗？</p>
                 </li>
             )
         })
@@ -33,21 +33,21 @@ export default class PersonalityRecommendActions extends Component {
         return (
             <div>
                 <BannerComponent />
-                <nav className={styles.tab}>
+                <nav className={styles.tab+' fill-base border-bottom-base'}>
                     {
                         this.recommendData.map((item,index)=>{
                             return (
                                 <a key={index}>
                                     <i></i>
-                                    <p>{item}</p>
+                                    <p className="color-text-base">{item}</p>
                                 </a>
                             )
                         })
                     }
                 </nav>
-                <div className={styles.tabct}>
-                    <section>
-                        <h2>
+                <div className={styles.tabct + ' fill-base'}>
+                    <section className="fill-base">
+                        <h2 className="color-text-base">
                             推荐歌单
                         </h2>
                         {
@@ -60,8 +60,8 @@ export default class PersonalityRecommendActions extends Component {
                             })
                         }
                     </section>
-                    <section>
-                        <h2>
+                    <section className="fill-base">
+                        <h2 className="color-text-base">
                             最新音乐
                         </h2>
                         {

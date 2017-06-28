@@ -53,6 +53,7 @@ export default class NavBarComponent extends Component {
         const {children,iconName=false} = this.props;
         return (
             <NavBar
+                className="theme-bg-color"
                 leftContent={this._renderLeft()}
                 rightContent={this._renderRight()}
                 iconName={iconName}
