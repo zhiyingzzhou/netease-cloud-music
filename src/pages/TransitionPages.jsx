@@ -15,10 +15,10 @@ export default class TransitionPages extends Component {
         if(location.state && location.state.transition) {
             switch(location.state.transition) {
                 case 'up':
-                    transition = 'sfu';
+                    transition = 'sfr';
                     break;
                 case 'down':
-                    transition = 'rfu';
+                    transition = 'rfr';
                     break;
             }
         }
@@ -26,8 +26,8 @@ export default class TransitionPages extends Component {
             <CSSTransitionGroup
                 component="div"
                 transitionName={`page-transition-${transition}`}
-                transitionEnterTimeout={200}
-                transitionLeaveTimeout={200}
+                transitionEnterTimeout={400}
+                transitionLeaveTimeout={400}
             >
                 {React.cloneElement(children,{
                     key: location.pathname

@@ -1,0 +1,50 @@
+@keyframes page-sfr-enter {
+  from {
+    transform: translate3d(100%, 0, 0); }
+  to {
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes page-sfr-leave {
+  to {
+    opacity: .9;
+    transform: translate3d(-20%, 0, 0); } }
+
+@keyframes page-rfr-enter {
+  from {
+    opacity: .9;
+    transform: translate3d(-20%, 0, 0); }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes page-rfr-leave {
+  to {
+    transform: translate3d(100%, 0, 0); } }
+
+.page-transition-sfr-enter-active {
+  pointer-events: none;
+  z-index: 5001; }
+
+.page-transition-rfr-leave-active {
+  pointer-events: none;
+  z-index: 5001; }
+
+.page-transition-sfr-enter-active {
+  animation-name: page-sfr-enter;
+  animation-duration: .4s;
+  animation-fill-mode: forwards; }
+
+.page-transition-sfr-leave-active {
+  animation-name: page-sfr-leave;
+  animation-duration: .4s;
+  animation-fill-mode: forwards; }
+
+.page-transition-rfr-enter-active {
+  animation-name: page-rfr-enter;
+  animation-duration: .4s;
+  animation-fill-mode: forwards; }
+
+.page-transition-rfr-leave-active {
+  animation-name: page-rfr-leave;
+  animation-duration: .4s;
+  animation-fill-mode: forwards; }

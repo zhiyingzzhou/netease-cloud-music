@@ -4,7 +4,18 @@ body {
     font-family: Helvetica,sans-serif;
 }
 
+#root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
 @import '../theme';
 @import './navbar';
 @import './page';
+// @import './android-page-animation';
+@import './ios-page-animation';
 @import './pagination';

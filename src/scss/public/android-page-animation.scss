@@ -1,0 +1,60 @@
+// Animations
+@keyframes page-sfu-enter {
+    from {
+        transform: translate3d(0,6%,0);
+    }
+    to {
+        transform: translate3d(0,0,0);
+    }
+}
+
+// REVEAL
+// -----------------------------------------------------------------------------
+@keyframes page-rfu-leave {
+    from {
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(0,20%,0);
+    }
+}
+
+// @keyframes page-sfu-leave {
+//     to {
+//         opacity: .9;
+//         transform: translate3d(-20%,0,0);
+//     }
+// }
+
+// Transition: Show
+// sfu: show-from-up
+// rfu: reveal-from-up
+.page-transition-sfu-enter-active{
+    pointer-events: none;
+    z-index: 5001;
+}
+
+.page-transition-rfu-leave-active{
+    pointer-events: none;
+    z-index: 5001;
+}
+
+// .page-transition-sfu-leave-active {
+//     pointer-events: none;
+// }
+
+.page-transition-sfu-enter-active {
+    animation-name: page-sfu-enter;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(.075, .82, .165, 1);
+}
+
+.page-transition-rfu-leave-active {
+    animation-name: page-rfu-leave;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(.075, .82, .165, 1);
+}

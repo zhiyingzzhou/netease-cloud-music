@@ -73,6 +73,8 @@ class DrawerContentComponent extends Component {
         router: PropTypes.object
     }
 
+    isExcute = false;
+
     state = {
         translateY: 0
     }
@@ -87,18 +89,18 @@ class DrawerContentComponent extends Component {
 
     handleTap = e => {
         const {isDrawerOpen} = this.props;
-        if(isDrawerOpen){
+        if(isDrawerOpen && typeof e !== 'undefined'){
+            this.isExcute = true;
             this.props.closeDrawer();
         }
-        if(typeof e === 'undefined') {
-            // setTimeout(()=>{
-            //     this.context.router.push({
-            //         pathname: 'settings',
-            //         state: {
-            //             transition: 'up'
-            //         }
-            //     });
-            // },500);
+        if(this.isExcute && typeof e === 'undefined') {
+            this.isExcute = false;
+            this.context.router.push({
+                pathname: 'settings',
+                state: {
+                    transition: 'up'
+                }
+            });
         }   
     }
 
